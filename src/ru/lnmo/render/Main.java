@@ -22,6 +22,7 @@ public class Main extends JFrame {
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         //Рисуем кадр.
         Render.render(img);
+        Render.renderLine(img, 100, 200, 200, 100, 1);
         g.drawImage(img, 0, 0, null);
     }
 
