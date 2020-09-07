@@ -21,8 +21,9 @@ public class Main extends JFrame {
         //Создаем буффер в который рисуем кадр.
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         //Рисуем кадр.
-        Render.render(img);
-        Render.renderLine(img, 100, 200, 200, 100, 1);
+        //Render.render(img);
+        Render.renderLine(img, 150, 200, 270, 700);
+        Render.renderTriangle(img, 100, 100, 100, 300, 300, 100);
         g.drawImage(img, 0, 0, null);
     }
 

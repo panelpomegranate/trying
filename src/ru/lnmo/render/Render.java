@@ -15,10 +15,20 @@ public class Render {
     }
 
     //Стоит начать с этого
-    public static void renderLine(BufferedImage img, int x1, int y1, int x2, int y2, int color){
+    public static void renderLine(BufferedImage img, int x1, int y1, int x2, int y2){
         for (int i = 0; i < 1366; i++) {
             for (int j = 0; j < 768; j++) {
-                if((i-x1)/(x2-x1)==(j-y1)/(y2-y1)){
+                if(j==(((i-x1)*(y2-y1))/(x2-x1))+y1){
+                    img.setRGB(i, j, new Color(0, 0, 0).getRGB() );
+                }
+            }
+        }
+    }
+
+    public static void renderTriangle(BufferedImage img, int x1, int y1, int x2, int y2, int x3, int y3){
+        for (int i = 0; i < 1366; i++) {
+            for (int j = 0; j < 768; j++) {
+                if((j<=(((i-x1)*(y2-y1))/(x2-x1))+y1)&(j>=(((i-x2)*(y3-y2))/(x3-x2))+y2)&(j<=(((i-x3)*(y1-y3))/(x1-x3))+y3)){
                     img.setRGB(i, j, new Color(0, 0, 0).getRGB() );
                 }
             }
