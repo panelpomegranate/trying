@@ -89,4 +89,20 @@ public class Render {
             }
         }
     }
+    public static void renderTriangle1(BufferedImage img, int x1, int y1, int x2, int y2, int x3, int y3, Color c){
+        int max_y=max(y1, max(y2, y3));
+        int max_x=max(x1, max(x2, x3));
+        int min_x=min(x1, min(x2, x3));
+        int min_y=min(y1, min(y2, y3));
+        double a= (double)((x2-x1)*(y3-y1)-(y2-y1)*(x3-x1));
+        for (int x = min_x; x <= max_x; x++) {
+            for (int y = min_y; y <= max_y; y++) {
+                double u=((double)((x-x1)*(y3-y1)-(x3-x1)*(y-y1)))/(a);
+                double v=((double)((x2-x1)*(y-y1)-(x-x1)*(y2-y1)))/(a);
+                if(((u+v)<=1)&(u>=0)&(v>=0)){
+                    img.setRGB(x, y, c.getRGB());
+                }
+            }
+        }
+    }
 }

@@ -38,7 +38,26 @@ public class Main extends JFrame {
         Render.renderLine1(img, 683, 384, 590, 422);
         Render.renderLine1(img, 683, 384, 644, 291);
         Render.renderLine1(img, 683, 384, 775, 345);
+
         Render.renderTriangle(img, 100, 200, 200, 300, 300, 100);
+
+        Render.renderTriangle1(img, 833, 534, 833, 634, 871, 626, new Color(0, 0, 0));
+        Render.renderTriangle1(img, 833, 534, 871, 626, 903, 604, new Color(16, 16, 16));
+        Render.renderTriangle1(img, 833, 534, 903, 604, 925, 572, new Color(32, 32, 32));
+        Render.renderTriangle1(img, 833, 534, 925, 572, 933, 534, new Color(48, 48, 48));
+        Render.renderTriangle1(img, 833, 534, 933, 534, 925, 495, new Color(64, 64, 64));
+        Render.renderTriangle1(img, 833, 534, 925, 495, 903, 463, new Color(80, 80, 80));
+        Render.renderTriangle1(img, 833, 534, 903, 463, 871, 441, new Color(96, 96, 96));
+        Render.renderTriangle1(img, 833, 534, 871, 441, 833, 434, new Color(112, 112, 112));
+        Render.renderTriangle1(img, 833, 534, 833, 434, 794, 441, new Color(128, 128, 128));
+        Render.renderTriangle1(img, 833, 534, 794, 441, 762, 463, new Color(144, 144, 144));
+        Render.renderTriangle1(img, 833, 534, 762, 463, 740, 495, new Color(160, 160, 160));
+        Render.renderTriangle1(img, 833, 534, 740, 495, 733, 534, new Color(176, 176, 176));
+        Render.renderTriangle1(img, 833, 534, 733, 534, 740, 572, new Color(192, 192, 192));
+        Render.renderTriangle1(img, 833, 534, 740, 572, 762, 604, new Color(208, 208, 208));
+        Render.renderTriangle1(img, 833, 534, 762, 604, 794, 626, new Color(224, 224, 224));
+        Render.renderTriangle1(img, 833, 534, 794, 626, 833, 634, new Color(240, 240, 240));
+
         g.drawImage(img, 0, 0, null);
     }
 
