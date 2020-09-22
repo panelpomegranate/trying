@@ -22,8 +22,23 @@ public class Main extends JFrame {
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         //Рисуем кадр.
         //Render.render(img);
-        Render.renderLine(img, 150, 200, 270, 700);
-        Render.renderTriangle(img, 100, 100, 100, 300, 300, 100);
+        Render.renderLine1(img, 683, 384, 783, 384);
+        Render.renderLine1(img, 683, 384, 683, 484);
+        Render.renderLine1(img, 683, 384, 683, 284);
+        Render.renderLine1(img, 583, 384, 683, 384);
+        Render.renderLine1(img, 683, 384, 613, 454);
+        Render.renderLine1(img, 683, 384, 613, 314);
+        Render.renderLine1(img, 683, 384, 753, 314);
+        Render.renderLine1(img, 683, 384, 753, 454);
+        Render.renderLine1(img, 683, 384, 775, 422);
+        Render.renderLine1(img, 683, 384, 644, 476);
+        Render.renderLine1(img, 683, 384, 590, 345);
+        Render.renderLine1(img, 721, 291, 683, 384);
+        Render.renderLine1(img, 683, 384, 721, 476);
+        Render.renderLine1(img, 683, 384, 590, 422);
+        Render.renderLine1(img, 683, 384, 644, 291);
+        Render.renderLine1(img, 683, 384, 775, 345);
+        Render.renderTriangle(img, 100, 200, 200, 300, 300, 100);
         g.drawImage(img, 0, 0, null);
     }
 
