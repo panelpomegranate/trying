@@ -3,8 +3,7 @@ package ru.lnmo.render;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 public class Render {
 
@@ -103,6 +102,82 @@ public class Render {
                     img.setRGB(x, y, c.getRGB());
                 }
             }
+        }
+    }
+    //вектора
+    //сумма, она же разность, если v2 брать с отрицательными координатами
+    public static int[] addition(int[] v1, int[] v2){
+        int[] sum=new int[v1.length];
+        for (int i = 0; i < v1.length; i++) {
+            sum[i]=v1[i]+v2[i];
+        }
+        return sum;
+    }
+
+    //умножение на скаляр
+    public static int[] multiplication_scal( int[] v, int a){
+        int[]res=new int[v.length];
+        for (int i = 0; i < v.length; i++) {
+            res[i]=v[i]*a;
+        }
+        return res;
+    }
+
+
+    public static int multiplication(int[] v1, int[] v2){
+        int res=0;
+        for (int i = 0; i < v1.length; i++) {
+            res+=v1[i]*v2[i];
+        }
+        return res;
+    }
+
+    public static int[] normal(int[] v){
+        int[]n=new int[v.length];
+        int d2=0;
+        for (int i = 0; i < v.length/2; i++) {
+            d2+=((v[v.length-i-1]-v[i])*(v[v.length-i-1]-v[i]));
+        }
+        int v_l=(int)Math.sqrt(d2);
+        for (int i = 0; i < v.length/2; i++) {
+            n[i]=v[i];
+        }
+        for (int i = v.length/2; i < v.length; i++) {
+            n[i]=v[i]-v[v.length-i-1];
+        }
+        return n;
+    }
+
+    //матрицы
+    //умножение
+    public static int[][] matrixmultiplication(int[][] m1, int[][]m2){
+        int[][]res=new int[m1.length][m2[0].length];
+        if(m1[0].length==m2.length){
+            for (int i = 0; i < res.length; i++) {
+                for (int j = 0; j < res[0].length; j++) {
+                    for (int k = 0; k < m1[0].length; k++) {
+                        res[i][j] += (m1[i][k] * m2[k][j]);
+                    }
+                }
+            }
+            return res;
+        }else{
+            return res;
+        }
+    }
+
+    //сложение
+    public static int[][] matrixaddition(int[][] m1, int[][]m2) {
+        int[][] res = new int[m1.length][m1[0].length];
+        if ((m1.length==m2.length)&(m1[0].length==m2[0].length)){
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1[0].length; j++) {
+                    res[i][j] = m1[i][j] + m2[i][j];
+                }
+            }
+            return res;
+        }else {
+            return res;
         }
     }
 }
