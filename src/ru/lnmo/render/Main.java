@@ -11,60 +11,133 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main extends JFrame {
+    private static List<String> readUsingScanner(String fileName) throws IOException {
+        return Files.readAllLines(Paths.get(fileName));
+    }
 
     static final int w = 1366;
-    static final int h = 768;
+    static final int h = 786;
 
-    public static void draw(Graphics2D g) {
-        //Создаем буффер в который рисуем кадр.
+    public static void draw(Graphics2D g) throws IOException {
+        String fileName = "C:/Users/leoso/Downloads/uaz.txt";
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        //Рисуем кадр.
-        //Render.render(img);
-        Render.renderLine1(img, 683, 384, 783, 384);
-        Render.renderLine1(img, 683, 384, 683, 484);
-        Render.renderLine1(img, 683, 384, 683, 284);
-        Render.renderLine1(img, 583, 384, 683, 384);
-        Render.renderLine1(img, 683, 384, 613, 454);
-        Render.renderLine1(img, 683, 384, 613, 314);
-        Render.renderLine1(img, 683, 384, 753, 314);
-        Render.renderLine1(img, 683, 384, 753, 454);
-        Render.renderLine1(img, 683, 384, 775, 422);
-        Render.renderLine1(img, 683, 384, 644, 476);
-        Render.renderLine1(img, 683, 384, 590, 345);
-        Render.renderLine1(img, 721, 291, 683, 384);
-        Render.renderLine1(img, 683, 384, 721, 476);
-        Render.renderLine1(img, 683, 384, 590, 422);
-        Render.renderLine1(img, 683, 384, 644, 291);
-        Render.renderLine1(img, 683, 384, 775, 345);
 
-        Render.renderTriangle(img, 100, 200, 200, 300, 300, 100);
+// String s="0";
+// s= readUsingScanner(fileName);
+        int k = 0;
+        double u[][] = new double[1000][3];
+        double vn[][] = new double[1000][3];
+        double vt[][] = new double[1000][3];
+        double f[][] = new double[1000][3];
+        int ff[] = new int[3];
+        int kk = 0;
+        for (String l : readUsingScanner(fileName)) {
+            k++;
+            l.split(" ");
 
-        Render.renderTriangle1(img, 833, 534, 833, 634, 871, 626, new Color(0, 0, 0));
-        Render.renderTriangle1(img, 833, 534, 871, 626, 903, 604, new Color(16, 16, 16));
-        Render.renderTriangle1(img, 833, 534, 903, 604, 925, 572, new Color(32, 32, 32));
-        Render.renderTriangle1(img, 833, 534, 925, 572, 933, 534, new Color(48, 48, 48));
-        Render.renderTriangle1(img, 833, 534, 933, 534, 925, 495, new Color(64, 64, 64));
-        Render.renderTriangle1(img, 833, 534, 925, 495, 903, 463, new Color(80, 80, 80));
-        Render.renderTriangle1(img, 833, 534, 903, 463, 871, 441, new Color(96, 96, 96));
-        Render.renderTriangle1(img, 833, 534, 871, 441, 833, 434, new Color(112, 112, 112));
-        Render.renderTriangle1(img, 833, 534, 833, 434, 794, 441, new Color(128, 128, 128));
-        Render.renderTriangle1(img, 833, 534, 794, 441, 762, 463, new Color(144, 144, 144));
-        Render.renderTriangle1(img, 833, 534, 762, 463, 740, 495, new Color(160, 160, 160));
-        Render.renderTriangle1(img, 833, 534, 740, 495, 733, 534, new Color(176, 176, 176));
-        Render.renderTriangle1(img, 833, 534, 733, 534, 740, 572, new Color(192, 192, 192));
-        Render.renderTriangle1(img, 833, 534, 740, 572, 762, 604, new Color(208, 208, 208));
-        Render.renderTriangle1(img, 833, 534, 762, 604, 794, 626, new Color(224, 224, 224));
-        Render.renderTriangle1(img, 833, 534, 794, 626, 833, 634, new Color(240, 240, 240));
+            if (l.length() != 0) {
+                if (l.charAt(0) == 'v' && l.charAt(1) == ' ') {
+                    kk = kk + 1;
+                    String s = "";
+                    int qq = 0;
+                    for (int i = 2; i < l.length(); i++) {
+                        if (l.charAt(i) != ' ') {
+                            s = s + l.charAt(i);
+                        } else {
+                            u[kk][qq] = Double.parseDouble(s);
+                            s = "";
+                            qq = qq + 1;
+                        }
+                    }
+                    u[kk][qq] = Double.parseDouble(s);
+                    s = "";
+                    qq = qq + 1;
+                }
 
-        g.drawImage(img, 0, 0, null);
+                if (l.charAt(0) == 'v' && l.charAt(1) == 't') {
+                    kk = 0;
+                    String s = "";
+                    int qq = 0;
+                    for (int i = 3; i < l.length(); i++) {
+                        if (l.charAt(i) != ' ') {
+                            s = s + l.charAt(i);
+                        } else {
+                            vt[i][qq] = Double.parseDouble(s);
+                            s = "";
+
+                            qq = qq + 1;
+                        }
+                    }
+
+                }
+                if (l.charAt(0) == 'v' && l.charAt(1) == 'n') {
+
+                    String s = "";
+                    int qq = 0;
+                    for (int i = 3; i < l.length(); i++) {
+                        if (l.charAt(i) != ' ') {
+                            s = s + l.charAt(i);
+                        } else {
+                            vn[i][qq] = Double.parseDouble(s);
+                            s = "";
+
+                            qq = qq + 1;
+                        }
+                    }
+
+                }
+                if (l.charAt(0) == 'f' && l.charAt(1) == ' ') {
+                    kk = kk + 1;
+                    String s = "";
+                    int qq = 0;
+                    int ss = 0;
+                    for (int i = 2; i < l.length(); i++) {
+
+                        if (l.charAt(i) != ' ' && l.charAt(i) != '/') {
+                            s = s + l.charAt(i);
+                        }
+                        if (l.charAt(i) == '/') {
+                            if (qq == 0) {
+                                ff[ss] = Integer.parseInt(s);
+                            }
+                            qq = qq + 1;
+                        }
+                        if (l.charAt(i) == ' ') {
+                            ss = ss + 1;
+                            s = "";
+                            qq = 0;
+                        }
+                    }
+                    int hh = ff[0];
+                    double x4 = u[hh][0] + 300;
+                    double y4 = u[hh][1] + 300;
+                    double z4 = u[hh][2] + 300;
+                    hh = ff[1];
+                    double x5 = u[hh][0] + 300;
+                    double y5 = u[hh][1] + 300;
+                    double z5 = u[hh][2] + 300;
+                    hh = ff[2];
+                    double x6 = u[hh][0] + 300;
+                    double y6 = u[hh][1] + 300;
+                    double z6 = u[hh][2] + 300;
+                    Render.renderTriangle(img, x4, y4, x5, y5, x6, y6, z4, z5, z6);
+                }
+            }
+        }
     }
 
 
 
-    //магический код позволяющий всему работать, лучше не трогать
-    public static void main(String[] args) throws InterruptedException {
+
+
+        //магический код позволяющий всему работать, лучше не трогать
+    public static void main(String[] args) throws InterruptedException, IOException {
         Main jf = new Main();
         jf.setSize(w, h);//размер экрана
         jf.setUndecorated(false);//показать заголовок окна
